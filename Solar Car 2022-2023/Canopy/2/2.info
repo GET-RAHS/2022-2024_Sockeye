@@ -1,0 +1,219 @@
+
+    System Info
+                Status:   Solver is finished.
+                Product:   Flow Simulation 2021 SP3.0. Build: 5251
+                Computer name:   THEBEEFMACHINE
+                User name:   Hailin Truman
+                Processors:   AMD Ryzen 7 5800H with Radeon Graphics         
+                Memory:   15776 MB / 4490 MB
+                Operating system:   Windows 10 (or higher) (Version 10.0.19044)
+                CAD version:   SOLIDWORKS 2021 SP3.0
+                CPU speed:   3201 MHz
+
+    General Info
+                Model:   Assem13.SLDASM
+                Project name:   Project(1)
+                Project path:   C:\Users\Hailin Truman\Documents\GrabCAD\CAD 2019-22\SolarCar2022-2023\Canopy\2
+                Units system:   SI (m-kg-s)
+                Analysis type:   External (exclude internal spaces)
+                Exclude cavities without flow conditions :   On
+                Coordinate system:   Global Coordinate System
+                Reference axis:   X
+
+    Physical Features
+                Heat conduction in solids:   Off
+                Time dependent:   Off
+                Gravitational effects:   On
+                Flow type:   Laminar and turbulent
+                High Mach number flow:   Off
+                Humidity:   Off
+                Free surface:   Off
+                Default roughness:   0 micrometer
+
+        Gravitational Settings
+                X component:   0 m/s^2
+                Y component:   -9.81 m/s^2
+                Z component:   0 m/s^2
+                Default wall conditions:   Adiabatic wall
+
+    Computational Domain
+
+        Size
+                X min:   -3.999 m
+                X max:   5.020 m
+                Y min:   -2.641 m
+                Y max:   5.375 m
+                Z min:   -3.283 m
+                Z max:   10.841 m
+                X size:   9.019 m
+                Y size:   8.016 m
+                Z size:   14.124 m
+
+    Goals
+
+        Global Goals
+
+            GG Average Velocity 1
+                Type:   Global Goal
+                Goal type:   Velocity
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Velocity (X) 2
+                Type:   Global Goal
+                Goal type:   Velocity (X)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Velocity (Y) 3
+                Type:   Global Goal
+                Goal type:   Velocity (Y)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Velocity (Z) 4
+                Type:   Global Goal
+                Goal type:   Velocity (Z)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Normal Force 5
+                Type:   Global Goal
+                Goal type:   Normal Force
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Normal Force (X) 6
+                Type:   Global Goal
+                Goal type:   Normal Force (X)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Normal Force (Y) 7
+                Type:   Global Goal
+                Goal type:   Normal Force (Y)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Normal Force (Z) 8
+                Type:   Global Goal
+                Goal type:   Normal Force (Z)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Force 9
+                Type:   Global Goal
+                Goal type:   Force
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Force (X) 10
+                Type:   Global Goal
+                Goal type:   Force (X)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Force (Y) 11
+                Type:   Global Goal
+                Goal type:   Force (Y)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Force (Z) 12
+                Type:   Global Goal
+                Goal type:   Force (Z)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Friction Force 13
+                Type:   Global Goal
+                Goal type:   Friction Force
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Friction Force (X) 14
+                Type:   Global Goal
+                Goal type:   Friction Force (X)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Friction Force (Y) 15
+                Type:   Global Goal
+                Goal type:   Friction Force (Y)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Friction Force (Z) 16
+                Type:   Global Goal
+                Goal type:   Friction Force (Z)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Shear Stress 17
+                Type:   Global Goal
+                Goal type:   Shear Stress
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Shear Stress (X) 18
+                Type:   Global Goal
+                Goal type:   Shear Stress (X)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Shear Stress (Y) 19
+                Type:   Global Goal
+                Goal type:   Shear Stress (Y)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Shear Stress (Z) 20
+                Type:   Global Goal
+                Goal type:   Shear Stress (Z)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+    Goals
+                
+                Name                             	Unit   	Value       	Progress   	Criteria   	Delta            	Use in convergence 
+                GG Average Velocity 1            	m/s    	22.246      	0          	0          	0.0209066777     	On                 
+                GG Average Velocity (X) 2        	m/s    	6.785e-04   	0          	0          	0.000126444518   	On                 
+                GG Average Velocity (Y) 3        	m/s    	0.003       	0          	0          	0.00229198965    	On                 
+                GG Average Velocity (Z) 4        	m/s    	22.244      	0          	0          	0.0209054266     	On                 
+                GG Normal Force 5                	N      	21.975      	0          	0          	5.72653318       	On                 
+                GG Normal Force (X) 6            	N      	-1.852      	0          	0          	0.896299445      	On                 
+                GG Normal Force (Y) 7            	N      	20.028      	0          	0          	5.08512908       	On                 
+                GG Normal Force (Z) 8            	N      	8.851       	0          	0          	4.21773268       	On                 
+                GG Force 9                       	N      	28.471      	0          	0          	9.04330961       	On                 
+                GG Force (X) 10                  	N      	-1.811      	0          	0          	0.887319586      	On                 
+                GG Force (Y) 11                  	N      	20.128      	0          	0          	5.0164798        	On                 
+                GG Force (Z) 12                  	N      	20.054      	0          	0          	8.31999136       	On                 
+                GG Friction Force 13             	N      	11.204      	0          	0          	3.78105648       	On                 
+                GG Friction Force (X) 14         	N      	0.041       	0          	0          	0.0126630117     	On                 
+                GG Friction Force (Y) 15         	N      	0.100       	0          	0          	0.100456415      	On                 
+                GG Friction Force (Z) 16         	N      	11.203      	0          	0          	3.78135899       	On                 
+                GG Average Shear Stress 17       	Pa     	0.73        	0          	0          	0.247661459      	On                 
+                GG Average Shear Stress (X) 18   	Pa     	2.62e-03    	0          	0          	0.000811198039   	On                 
+                GG Average Shear Stress (Y) 19   	Pa     	6.40e-03    	0          	0          	0.00643528165    	On                 
+                GG Average Shear Stress (Z) 20   	Pa     	0.72        	0          	0          	0.242235502      	On                 
+
+    General Info
+                Run at:   THEBEEFMACHINE
+                Number of cores:   16
+                Iterations:   100
+                CPU time:   251 s
+
+        Log
+                Mesh generation started	0:   18:34:12 , Oct 19
+                Mesh generation normally finished	0:   18:34:17 , Oct 19
+                Preparing data for calculation	0:   18:34:17 , Oct 19
+                Calculation started	0:   18:34:30 , Oct 19
+                Calculation finished	139:   18:40:09 , Oct 19

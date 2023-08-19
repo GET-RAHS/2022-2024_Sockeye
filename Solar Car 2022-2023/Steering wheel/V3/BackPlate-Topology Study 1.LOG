@@ -1,0 +1,6 @@
+No.of Nodes = 74781
+No. of elements   = 43529
+Total Solution time =00:00:05.136031
+Topology Error 1= The constraint definition of the constraint MASS_CONSTRAINT_2 is not correct.  The constraint value (mapped on the design elements) is less than zero which me ans that the number of (auto) frozen elements  (or non-design elements) is higher than the possible number of remaining elemen ts. Thus, please increase the value of the weight constraint or increase the number of elements applied in the weight constraint. The constraint weight given from the user is: 0.164275563330474  Constraint weight (absolute): 0.164275563330474 weight of frozen elements in design area (absolute): 0.213663555404728 weight of non design area elements (absolute): 0.000000000000000E+000 weight of frozen elements outside design area (absolute): 0.000000000000000E+000  -> Please check the constraint definition. 
+Topology Error 2= It was not possible to finish the determination of the parameters for TOPOLOGY OPTIMIZATION because the transformation of the volume constraints failed. -> Please check the definition of the volume constraints and read the error messages above  -> The optimization loop will not start. Please check INPUT!
+

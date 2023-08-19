@@ -1,0 +1,260 @@
+
+    System Info
+                Status:   Solver is finished.
+                Product:   Flow Simulation 2021 SP3.0. Build: 5251
+                Computer name:   DESKTOP-KCSM5E5
+                User name:   ranki
+                Processors:   AMD Ryzen 5 1600 Six-Core Processor            
+                Memory:   16311 MB / 4992 MB
+                Operating system:   Windows 10 (or higher) (Version 10.0.19044)
+                CAD version:   SOLIDWORKS 2021 SP3.0
+                CPU speed:   3600 MHz
+
+    General Info
+                Model:   Base Model.SLDPRT
+                Project name:   Project(1)
+                Project path:   C:\Users\ranki\Documents\GrabCAD\CAD 2019-22\Solar Car 2022-2023\Aerodynamic Models\Aero Model Final\Iteration 2 Mid Canopy\2
+                Units system:   SI (m-kg-s)
+                Analysis type:   External (not exclude internal spaces)
+                Exclude cavities without flow conditions :   Off
+                Coordinate system:   Global Coordinate System
+                Reference axis:   X
+
+    Physical Features
+                Heat conduction in solids:   Off
+                Time dependent:   Off
+                Gravitational effects:   Off
+                Flow type:   Laminar and turbulent
+                High Mach number flow:   Off
+                Humidity:   Off
+                Free surface:   Off
+                Default roughness:   0 micrometer
+                Default wall conditions:   Adiabatic wall
+
+    Computational Domain
+
+        Size
+                X min:   -0.900 m
+                X max:   3.671 m
+                Y min:   1.687 m
+                Y max:   4.522 m
+                Z min:   -1.959 m
+                Z max:   10.283 m
+                X size:   4.571 m
+                Y size:   2.836 m
+                Z size:   12.242 m
+
+    Calculation Mesh
+
+        Basic Mesh Dimensions
+                Number of cells in X:   20
+                Number of cells in Y:   14
+                Number of cells in Z:   49
+
+        Number Of Cells
+                Cells:   14144
+                Fluid cells:   14144
+                Irregular cells:   0
+                Trimmed cells:   0
+                Maximum refinement level:   1
+
+    Goals
+
+        Global Goals
+
+            GG Average Density (Fluid) 1
+                Type:   Global Goal
+                Goal type:   Density (Fluid)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Mass (Fluid) 2
+                Type:   Global Goal
+                Goal type:   Mass (Fluid)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Mass Flow Rate 3
+                Type:   Global Goal
+                Goal type:   Mass Flow Rate
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Volume Flow Rate 4
+                Type:   Global Goal
+                Goal type:   Volume Flow Rate
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Velocity 5
+                Type:   Global Goal
+                Goal type:   Velocity
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Velocity (X) 6
+                Type:   Global Goal
+                Goal type:   Velocity (X)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Velocity (Y) 7
+                Type:   Global Goal
+                Goal type:   Velocity (Y)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Velocity (Z) 8
+                Type:   Global Goal
+                Goal type:   Velocity (Z)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Normal Force 9
+                Type:   Global Goal
+                Goal type:   Normal Force
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Normal Force (X) 10
+                Type:   Global Goal
+                Goal type:   Normal Force (X)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Normal Force (Y) 11
+                Type:   Global Goal
+                Goal type:   Normal Force (Y)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Normal Force (Z) 12
+                Type:   Global Goal
+                Goal type:   Normal Force (Z)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Force 13
+                Type:   Global Goal
+                Goal type:   Force
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Force (X) 14
+                Type:   Global Goal
+                Goal type:   Force (X)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Force (Y) 15
+                Type:   Global Goal
+                Goal type:   Force (Y)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Force (Z) 16
+                Type:   Global Goal
+                Goal type:   Force (Z)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Friction Force 17
+                Type:   Global Goal
+                Goal type:   Friction Force
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Friction Force (X) 18
+                Type:   Global Goal
+                Goal type:   Friction Force (X)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Friction Force (Y) 19
+                Type:   Global Goal
+                Goal type:   Friction Force (Y)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Friction Force (Z) 20
+                Type:   Global Goal
+                Goal type:   Friction Force (Z)
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Shear Stress 21
+                Type:   Global Goal
+                Goal type:   Shear Stress
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Shear Stress (X) 22
+                Type:   Global Goal
+                Goal type:   Shear Stress (X)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Shear Stress (Y) 23
+                Type:   Global Goal
+                Goal type:   Shear Stress (Y)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+            GG Average Shear Stress (Z) 24
+                Type:   Global Goal
+                Goal type:   Shear Stress (Z)
+                Calculate:   Average value
+                Coordinate system:   Global Coordinate System
+                Use in convergence :   On
+
+    Goals
+                
+                Name                             	Unit     	Value       	Progress   	Criteria         	Delta            	Use in convergence 
+                GG Average Density (Fluid) 1     	kg/m^3   	1.20        	100        	2.75101543e-07   	2.34133128e-08   	On                 
+                GG Mass (Fluid) 2                	kg       	187.707     	100        	1.8770309        	3.65098612e-06   	On                 
+                GG Mass Flow Rate 3              	kg/s     	0           	1000       	0.001            	0                	On                 
+                GG Volume Flow Rate 4            	m^3/s    	0           	1000       	8.30789025e-05   	0                	On                 
+                GG Average Velocity 5            	m/s      	22.120      	100        	0.00306674848    	0.000404982618   	On                 
+                GG Average Velocity (X) 6        	m/s      	-0.003      	30         	0.000146029296   	0.000481099705   	On                 
+                GG Average Velocity (Y) 7        	m/s      	0.056       	100        	0.00198747379    	0.000323046883   	On                 
+                GG Average Velocity (Z) 8        	m/s      	22.109      	100        	0.00292228075    	0.000413351608   	On                 
+                GG Normal Force 9                	N        	34.692      	100        	5.01061594       	0.185639839      	On                 
+                GG Normal Force (X) 10           	N        	0.697       	100        	0.927504022      	0.270603373      	On                 
+                GG Normal Force (Y) 11           	N        	-30.968     	100        	3.79196047       	0.252913689      	On                 
+                GG Normal Force (Z) 12           	N        	15.623      	100        	5.51458158       	0.171404076      	On                 
+                GG Force 13                      	N        	41.036      	100        	5.25804881       	0.166885173      	On                 
+                GG Force (X) 14                  	N        	0.680       	100        	0.928817988      	0.268325095      	On                 
+                GG Force (Y) 15                  	N        	-30.839     	100        	3.79165306       	0.251187092      	On                 
+                GG Force (Z) 16                  	N        	27.064      	100        	5.71840926       	0.163454633      	On                 
+                GG Friction Force 17             	N        	11.441      	100        	0.203847403      	0.0126852528     	On                 
+                GG Friction Force (X) 18         	N        	-0.017      	54         	0.001738771      	0.00321115409    	On                 
+                GG Friction Force (Y) 19         	N        	0.128       	100        	0.00629922865    	0.00223732377    	On                 
+                GG Friction Force (Z) 20         	N        	11.440      	100        	0.203827681      	0.0126640925     	On                 
+                GG Average Shear Stress 21       	Pa       	0.64        	100        	0.0122743803     	0.000694795255   	On                 
+                GG Average Shear Stress (X) 22   	Pa       	-9.41e-04   	54         	9.63222083e-05   	0.0001778874     	On                 
+                GG Average Shear Stress (Y) 23   	Pa       	7.11e-03    	100        	0.000348956599   	0.000123940396   	On                 
+                GG Average Shear Stress (Z) 24   	Pa       	0.63        	100        	0.0112913848     	0.000701549174   	On                 
+
+    General Info
+                Run at:   DESKTOP-KCSM5E5
+                Number of cores:   12
+                Iterations:   194
+                CPU time:   32 s
+
+        Log
+                Mesh generation started	0:   08:20:16 , Feb 02
+                Mesh generation normally finished	0:   08:20:17 , Feb 02
+                Preparing data for calculation	0:   08:20:17 , Feb 02
+                Calculation started	0:   08:20:18 , Feb 02
+                Calculation has converged since the following criteria are satisfied:	194:   08:20:50 , Feb 02
+                    Max. travel is reached	194:   
+                Calculation finished	194:   08:20:50 , Feb 02
+                Warnings:   Invalid goals	Goal name: GG Mass Flow Rate 3, 		Goal name: GG Volume Flow Rate 4, 		, 

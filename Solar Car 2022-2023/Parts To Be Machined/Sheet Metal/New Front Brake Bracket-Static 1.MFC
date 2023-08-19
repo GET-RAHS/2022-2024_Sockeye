@@ -1,0 +1,16 @@
+[StartTime]
+New Front Brake Bracket-Static 1.MFC=2s
+[SolverState]
+New Front Brake Bracket-Static 1.MFC=2
+[MainFrame]
+New Front Brake Bracket-Static 1.MFC=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMECAAAAAHEBAAAAAELDAAAAAKBCAAAAA
+[ShowMin]
+New Front Brake Bracket-Static 1.MFC=No
+[SolverType]
+New Front Brake Bracket-Static 1.MFC=Linear Analysis
+[StudyType]
+New Front Brake Bracket-Static 1.MFC=0
+[StudyName]
+New Front Brake Bracket-Static 1.MFC=Static 1
+[Solver]
+New Front Brake Bracket-Static 1.MFC=Iterative

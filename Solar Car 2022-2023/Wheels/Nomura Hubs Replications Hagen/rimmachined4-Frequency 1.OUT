@@ -1,0 +1,202 @@
+
+****************************************************************
+****************************************************************
+**                                                            **
+**                                                            **
+**        CCC     OO      SSS    M    M     OO      SSS       **
+**       C       O  O    S       MM  MM    O  O    S          **
+**       C       O  O     SS     M MM M    O  O     SS        **
+**       C       O  O       S    M    M    O  O       S       **
+**        CCC     OO     SSS     M    M     OO     SSS        **
+**                                                            **
+**                                                            **
+**                   Simulations  V2021-B3                    **
+**                 Simulation Premium Package                 **
+**           Distributed By: SOLIDWORKS Corporation           **
+**               6320 Canoga Avenue, Suite 300                **
+**               Woodland Hills, California 91367             **
+**               Telephone Number (818)673-2200               **
+**         Copyright 1988-2018 SOLIDWORKS Corporation         **
+**                                                            **
+****************************************************************
+****************************************************************
+
+Problem name: C:\Users\ranki\Desktop\Nomura Hubs Repli
+Date        : 08/29/2022     Time:   20:16:33
+
+
+ SYSTEM OF UNITS:
+ International System of Units, SI, is used for all input/output data.
+ Common Quantities:
+ Length:meter, Mass:kilogram, Time:second, Temperature:kelvin
+ Force:newton, Pressure also stress:pascal, Energy:joule, Power:watt
+
+ NUMBER OF PHYSICAL CORES USED TO RUN SIMULATION:  4
+
+  C O N T R O L  I N F O R M A T I O N                  
+
+   CURRENT RESTRAINT SET . . . . . . . . . . . (BC_SET)  =           1
+
+   NUMBER OF LOAD CASES  . . . . . . . . . . . (NLCASE)  =           1
+   SOLUTION MODE . . . . . . . . . . . . . . . (MODEX)   =           2
+      EQ. 0, STATIC ANALYSIS                              
+      EQ. 1, BUCKLING ANALYSIS                            
+      EQ. 2, DYNAMIC ANALYSIS                             
+      EQ. 3, DROP TEST                                    
+
+   SOLVER TYPE . . . . . . . . . . . . . . . . .(ISOL)   =           2
+      EQ. 0, DIRECT SPARSE SOLVER                         
+      EQ. 1, DIRECT SKYLINE SOLVER                        
+      EQ. 2, ITERATIVE SOLVER                             
+      EQ. 3, EXPLICIT INTEGRATION                         
+      EQ. 4, LARGE PROBLEM DIRECT SPARSE SOLVER           
+      EQ. 5, INTEL DIRECT SPARSE SOLVER                   
+      EQ. 6, INTEL NETWORK SPARSE SOLVER                  
+
+   ITERATIVE SOLUTION MODE . . . . . . . . . . (IMODE)   =           2
+      EQ. 1, GENERAL                                      
+      EQ. 2, MEMORY SAVER (FOR TETRA10)                   
+      EQ. 3, ULTRA-MEMORY SAVER (FOR TETRA10)             
+
+   THERMAL LOADING FLAG . . . . . . . . . . . .(ITHERM)  =           0
+      EQ. 0, NO THERMAL EFFECTS CONSIDERED                
+      EQ. 1, ADD TEMPERATURE EFFECT                       
+   GRAVITY LOADING FLAG . . . . . . . . . . . .(IGRAV)   =           0
+      EQ. 0, NO GRAVITY LOADING CONSIDERED                
+      EQ. 1, ADD GRAVITY LOADING EFFECT                   
+   CENTRIFUGAL LOADING FLAG . . . . . . . . . .(ICNTRF)  =           0
+      EQ. 0, NO CENTRIFUGAL LOADING CONSIDERED            
+      EQ. 1, ADD CENTRIFUGAL LOADING EFFECT               
+   IN-PLANE STIFFENING FLAG . . . . . . . . . .(INPLN)   =           0
+      EQ. 0, NO IN-PLANE EFFECTS CONSIDERED               
+      EQ. 1, IN-PLANE EFFECTS CONSIDERED                  
+   SOFT SPRING ADDITION FLAG . . . . . . . . . (ISOFT)   =           0
+      EQ. 0, NO SOFT SPRING OPTION                        
+      EQ. 1, SOFT SPRING ADDED                            
+
+   SAVE DECOMPOSED STIFFNESS MATRIX FLAG . . . (ISAVK)   =           0
+      EQ. 0, DO NOT SAVE DECOMPOSED K                     
+      EQ. 1, SAVE DECOMPOSED K                            
+   FORM STIFFNESS MATRIX FLAG . . . . . . . . .(IFORMK)  =           0
+      EQ. 0, FORM STIFFNESS MATRIX                        
+      EQ. 1, USE EXISTING DECOMPOSED STIFFNESS MATRIX     
+
+   SPIN SOFTENING FLAG . . . . . . . . . . . . (ISPIN)   =           0
+      EQ. 0, NO SPIN SOFTENING EFFECTS CONSIDERED         
+      EQ. 1, SPIN SOFTENING EFFECTS CONSIDERED            
+   INERTIA RELIEF FLAG  . . . . . . . . . . . .(IFORMK)  =           0
+      EQ. 0, NO INERITA RELIEF EFFECTS CONSIDERED         
+      EQ. 1, INERITA RELIEF EFFECTS CONSIDERED            
+   RIGID CONNECTIONS FLAG  . . . . . . . . . . (IRIGID)  =           0
+      EQ. 0, HINGE CONNECTIONS BETWEEN SOLIDS & SHELLS    
+      EQ. 1, RIGID CONNECTIONS BETWEEN SOLIDS & SHELLS    
+
+
+  T O T A L  S Y S T E M  D A T A                        
+   NUMBER OF EQUATIONS . . . . . . . . . . . . . .(NEQ)  =      101214
+   NUMBER OF ELEMENTS. . . . . . . . . . . . . . .(NUME) =       16635
+   NUMBER OF NODAL POINTS. . . . . . . . . . . . .(NUMNP)=       33738
+
+    APPLIED FREQUENCY SHIFT. . . . . . . . .(FRSH)= 0.0000000E+00
+
+
+1
+
+    -------------------------------------------------------------------------
+    |            M A S S   M O M E N T   I N F O R M A T I O N              |
+    |-----------------------------------------------------------------------|
+    |MASS    0.229757E+01   |VOLUME  0.850954E-03   |WEIGHT  0.000000E+00   |
+    |-----------------------------------------------------------------------|
+    | MASS MOMENT OF INERTIA W.R.T. C.G.                                    |
+    |-----------------------------------------------------------------------|
+    |IX      0.696916E-01   |IY      0.365008E-01   |IZ      0.367988E-01   |
+    |-----------------------------------------------------------------------|
+    | MASS PRODUCT OF INERTIA W.R.T. C.G.                                   |
+    |-----------------------------------------------------------------------|
+    |PXY     0.555177E-04   |PXZ     0.240758E-04   |PYZ     0.104021E-03   |
+    |-----------------------------------------------------------------------|
+    | RADII OF GYRATION W.R.T. C.G.                                         |
+    |-----------------------------------------------------------------------|
+    |RX      0.174163E+00   |RY      0.126042E+00   |RZ      0.126556E+00   |
+    |-----------------------------------------------------------------------|
+    | CENTER OF GRAVITY                                                     |
+    |-----------------------------------------------------------------------|
+    |CGx     0.117236E-01   |CGy    -0.946984E-03   |CGz    -0.269423E-03   |
+    |-----------------------------------------------------------------------|
+    | PRINCIPAL MASS MOMENT OF INERTIA                                      |
+    |-----------------------------------------------------------------------|
+    |P1      0.696917E-01   |P2      0.368324E-01   |P3      0.364671E-01   |
+    |-----------------------------------------------------------------------|
+    | PRINCIPAL RADII OF GYRATION                                           |
+    |-----------------------------------------------------------------------|
+    |R1      0.174163E+00   |R2      0.126614E+00   |R3      0.125984E+00   |
+    |-----------------------------------------------------------------------|
+    | PRINCIPAL AXES (DIRECTION COSINES IN ROWS W.R.T C.G)                  |
+    |-----------------------------------------------------------------------|
+    |N_11    0.999998E+00   |N_12   -0.167040E-02   |N_13   -0.726661E-03   |
+    |-----------------------------------------------------------------------|
+    |N_21    0.127819E+00   |N_22    0.277320E+00   |N_23   -0.952237E+00   |
+    |-----------------------------------------------------------------------|
+    |N_31    0.179213E-02   |N_32    0.952143E+00   |N_33    0.277533E+00   |
+    -------------------------------------------------------------------------
+
+  F R E Q U E N C Y   A N A L Y S I S  
+                 by 
+ L A N C Z O S   A L G O R I T H M
+
+
+     FREQUENCY       FREQUENCY       FREQUENCY       PERIOD
+      NUMBER         (RAD/SEC)      (CYCLES/SEC)    (SECONDS)
+
+         1        0.0000000E+00    0.0000000E+00  0.1000000E+33
+         2        0.0000000E+00    0.0000000E+00  0.1000000E+33
+         3        0.1872337E-02    0.2979916E-03  0.3355799E+04
+         4        0.5052111E-02    0.8040684E-03  0.1243675E+04
+         5        0.6855293E-02    0.1091054E-02  0.9165451E+03
+
+
+        ************************************************************
+        *      M O D A L   B A S E   P A R T I C I P A T I O N     *
+        ************************************************************
+
+ MODE          PARTICIPATION FACTORS                     MODAL MASSES
+  No.      x-dir       y-dir       z_dir          Mx        My        Mz
+
+    1   -1.5158      0.0000      0.0000       2.2976     0.0000     0.0000    
+    2    0.0000     -1.5158      0.0000       0.0000     2.2976     0.0000    
+    3    0.0000      0.0000     -1.5158       0.0000     0.0000     2.2976    
+    4   -.50611E-18 -.22527E-15 0.18184E-15   .25614E-36 .50748E-31 .33067E-31
+    5   0.29073E-15 0.52405E-18 -.44054E-15   .84526E-31 .27463E-36 .19408E-30
+                                              __________ __________ __________
+
+                      TOTAL EFFECTIVE MASS  = 2.2976     2.2976     2.2976    
+
+
+                                                          *
+               INDIVIDUAL MODAL MASS            CUMULATIVE  EFFECTIVE MASS
+               ---------------------            --------------------------
+                    TOTAL MASS                         TOTAL MASS        
+
+ MODE        Mx          My         Mz         Cum. Mx    Cum. My    Cum. Mz
+  No.       ----        ----       ----        -------    -------    -------
+            MASS        MASS       MASS          MASS       MASS       MASS
+
+    1       1.00        0.00        0.00         1.00       0.00       0.00    
+    2       0.00        1.00        0.00         1.00       1.00       0.00    
+    3       0.00        0.00        1.00         1.00       1.00       1.00    
+    4      0.111E-36   0.221E-31   0.144E-31     1.00       1.00       1.00    
+    5      0.368E-31   0.120E-36   0.845E-31     1.00       1.00       1.00    
+
+                    TOTAL EFFECTIVE MASS
+                    --------------------  =     1.000      1.000      1.000
+                         TOTAL MASS       
+
+
+ Note: Cumulative value at each mode is the sum of the values
+       up to and including that mode
+ _____________________________________________________________________________
+
+
+
+
+T O T A L   S O L U T I O N   T I M E (sec) . . . . =       8

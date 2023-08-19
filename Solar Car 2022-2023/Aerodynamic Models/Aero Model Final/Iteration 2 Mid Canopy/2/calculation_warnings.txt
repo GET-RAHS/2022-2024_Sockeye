@@ -1,0 +1,10 @@
+2023-Feb-02 08:20:50
+Computer name:	DESKTOP-KCSM5E5
+Number of cores used in calculation:	12
+Configuration name:	Default
+Project name:	Project(1)
+
+Warnings on last iteration: 
+1. Invalid goals :
+	Goal name: GG Mass Flow Rate 3
+	Goal name: GG Volume Flow Rate 4
