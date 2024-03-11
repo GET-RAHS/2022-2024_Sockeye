@@ -15,7 +15,7 @@ TwoWire i2cControl = TwoWire(1); */
 
 //input pins
 const unsigned int leftTurnButton = 39,
-rightTurnButton = 41,
+rightTurnButton = ,
 hazardButton = 32,
 daylightButton = 30,
 TLButton = 37,
@@ -91,14 +91,14 @@ hallpulses = 0, //
 total_distance = 0,
 total_distance_read = 0,
 trip_distance = 0,
-kph = 0,   		  //what for though??
-hall_factor = 35685,  	  // 1586/16 * 3.6
+kph = 0,  		   //what for though??
+hall_factor = 35685, 	   // 1586/16 * 3.6
 
 //power buffer
 buffer=3000;
 
 //throttle limiter logic
-float TLv = 0,    	  //maximum voltage going to motor controller under throttle limiter constraints
+float TLv = 0,   	   //maximum voltage going to motor controller under throttle limiter constraints
 actualTLv = 0,
 scaledInPedalV = 0,
 outPedalV = 0;
@@ -237,7 +237,7 @@ void setup() {
   Wire1.setSDA(18);
   Wire1.setSCL(19); //MY STUPID BRAIN SET TWO SDAS ATSVGHGSDBUXHNDJIUJHBNHSIJ
   //odometer_read(); //needed??
-  Wire1.onRequest(currDataTransmit);
+  //Wire1.onRequest(currDataTransmit);
 
   //start values
   Serial.println("Program not dead yet.");
@@ -247,15 +247,15 @@ void setup() {
   lcd.init(); // IMPORTANT: can also use to refresh lcd if it desyncs
   lcd.clear();
   //labels left
-	lcdLabel("MOTW", 0, 0);
-	lcdLabel("BATW", 0, 1);
-	lcdLabel("SOL2W", 0, 2);
-	lcdLabel("SOL1W", 0, 3);
-	//labels right
-	lcdLabel("BATV", 10, 0);
-	lcdLabel("PEDV", 10, 1);
-	lcdLabel("CCV", 10, 2);
-	lcdLabel("KPH", 10, 3); //might be mph later tho
+    lcdLabel("MOTW", 0, 0);
+    lcdLabel("BATW", 0, 1);
+    lcdLabel("SOL2W", 0, 2);
+    lcdLabel("SOL1W", 0, 3);
+    //labels right
+    lcdLabel("BATV", 10, 0);
+    lcdLabel("PEDV", 10, 1);
+    lcdLabel("CCV", 10, 2);
+    lcdLabel("KPH", 10, 3); //might be mph later tho
   lcd.backlight();
   digitalWrite(brakeOut, HIGH);
   digitalWrite(rightOut, HIGH);
@@ -265,7 +265,7 @@ void setup() {
  
 
   //throttle reset redundancy
-  TLv = 0;    	 
+  TLv = 0;   	 
   actualTLv = 0;
   scaledInPedalV = 0;
   outPedalV = 0;
@@ -292,7 +292,7 @@ void Buttons()
   //Serial.print("Before: "); Serial.println(lastRead[i]);
   if (digitalRead(buttonPins[i])==conditions[i] && lastRead[i]!=conditions[i])
   {
-	(*functions[i])(i);
+    (*functions[i])(i);
   }
   lastRead[i]=digitalRead(buttonPins[i]);
   }
@@ -300,30 +300,30 @@ void Buttons()
 void heldButtons() {
   for (unsigned int i=0;i<buttonsN;i++)
   {
-  	//Serial.print("Current:");Serial.print(buttonPins[i]);Serial.println(digitalRead(buttonPins[i]));
-  	//Serial.print("Before: "); Serial.println(lastRead[i]);
-  	if ((digitalRead(heldButtonPins[i]) == heldConditions[i]) && (heldLastRead[i] != heldConditions[i])) {
-  		initialPressTime[i] = millis();
-  		heldLastRead[i] = digitalRead(heldButtonPins[i]);
-  	}
- 	 
-  	if (debounce(millis(), initialPressTime[i], intervals[i]) && digitalRead(heldButtonPins[i]) == heldLastRead[i]) {
-  	  (*functions[i])(i);
-  	}
-  	//lastRead[i]=digitalRead(buttonPins[i]);
+      //Serial.print("Current:");Serial.print(buttonPins[i]);Serial.println(digitalRead(buttonPins[i]));
+      //Serial.print("Before: "); Serial.println(lastRead[i]);
+      if ((digitalRead(heldButtonPins[i]) == heldConditions[i]) && (heldLastRead[i] != heldConditions[i])) {
+     	 initialPressTime[i] = millis();
+     	 heldLastRead[i] = digitalRead(heldButtonPins[i]);
+      }
+	 
+      if (debounce(millis(), initialPressTime[i], intervals[i]) && digitalRead(heldButtonPins[i]) == heldLastRead[i]) {
+        (*functions[i])(i);
+      }
+      //lastRead[i]=digitalRead(buttonPins[i]);
   }
 }
 
 void assignHeldButton(const unsigned int pin, void(*f)(), const unsigned int cond, const unsigned long interval) {
 
     
-	heldButtonPins[heldButtonsN] = pin;
-	initialPressTime[heldButtonsN] = millis();
-	intervals[heldButtonsN] = interval;
-	heldFunctions[heldButtonsN] = f;
-	heldConditions[heldButtonsN] = cond;
-	heldLastRead[heldButtonsN]=digitalRead(pin);
-	heldButtonsN++;
+    heldButtonPins[heldButtonsN] = pin;
+    initialPressTime[heldButtonsN] = millis();
+    intervals[heldButtonsN] = interval;
+    heldFunctions[heldButtonsN] = f;
+    heldConditions[heldButtonsN] = cond;
+    heldLastRead[heldButtonsN]=digitalRead(pin);
+    heldButtonsN++;
 }
 
 //logic debounce
@@ -358,8 +358,8 @@ void lcdDataWriter(float data, int space, int cursorX, int cursorY, int emptyspa
   //if (type == "float") {
   //if data is a decimal, it prints in this manner
   /* if (spaces > 0) {
-    lcd.setCursor(cursorX - length + 2 + spaces, cursorY);
-    lcd.print(" ");
+	lcd.setCursor(cursorX - length + 2 + spaces, cursorY);
+	lcd.print(" ");
   } */
   lcd.setCursor(cursorX - length + 2, cursorY);
   lcd.print(data, 1); //number of values after the point is 1
@@ -408,13 +408,13 @@ void sendFloat32(float x)
   unsigned int signBIT=0;
   if (0.0>x)
   {
-  	signBIT=1;
+      signBIT=1;
   }
   int exp=0;
   unsigned long frbin=LARSEN___________a___frbinexpwithbias(frabs(x),&exp);
   unsigned long bits=signBIT<<31 | (exp&0xFF) << 23 | frbin&0b11111111111111111111111;
-	//Serial.printf("\nfrbits: %lx\n",frbin);
-	//Serial.printf("\nbits: %lx\n",bits);
+    //Serial.printf("\nfrbits: %lx\n",frbin);
+    //Serial.printf("\nbits: %lx\n",bits);
   Wire.write((unsigned char)(bits&0xFF));
   Wire.write((unsigned char)(bits>>8)&0xFF);
   Wire.write(((unsigned char)(bits>>16)&0xFF));
@@ -442,8 +442,8 @@ void sendInt8(int x)
   unsigned int int8bin=mag;
   unsigned int sign=0;
   if (0>x){
-  	sign=1;
-  	int8bin=~mag+1|sign<<7; // check precedence
+      sign=1;
+      int8bin=~mag+1|sign<<7; // check precedence
   }
   Wire1.write((unsigned char)int8bin&0xFF);
 }
@@ -453,8 +453,8 @@ void sendInt16(int x)
   unsigned int int16bin=mag;
   unsigned int sign=0;
   if (0>x){
-  	sign=1;
-  	int16bin=~mag+1|sign<<15;
+      sign=1;
+      int16bin=~mag+1|sign<<15;
   }
   Wire.write((unsigned char)int16bin&0xFF);
   Wire.write((unsigned char)int16bin>>8&0xFF);
@@ -465,8 +465,8 @@ void sendInt32(long x)
   unsigned long int32bin=mag;
   unsigned int sign=0;
   if (0>x){
-  	sign=1;
-  	int32bin=~mag+1|sign<<31;
+      sign=1;
+      int32bin=~mag+1|sign<<31;
   }
   Wire.write((unsigned char)int32bin&0xFF);
   Wire.write((unsigned char)int32bin>>8&0xFF);
@@ -481,49 +481,49 @@ unsigned long LARSEN___________a___frbinexpwithbias(float x, int* exp)
     
  
   if (x==0.0 || float32min>x) { // 0.0 or less than min
-  	return 0;
+      return 0;
   } else if (float32max<x) { // larger than max (inf)
-  	*exp=0b11111111;
-  	return 0;
+      *exp=0b11111111;
+      return 0;
   }
  
   if (x>=2.0)
   {
-  	while (normalized>=2.0) // normalize
-  	{
-		  normalized/=2;
-		  (*exp)++;
-  	}
+      while (normalized>=2.0) // normalize
+      {
+   	   normalized/=2;
+   	   (*exp)++;
+      }
   } else if (x<1.0) {
-  	while (normalized<1.0) // normalize
-  	{
-		  normalized*=2;
-		  (*exp)--;
-  	}
+      while (normalized<1.0) // normalize
+      {
+   	   normalized*=2;
+   	   (*exp)--;
+      }
   } else if (x==1.0) { // weird
-  	*exp=127;
-  	return 0;
+      *exp=127;
+      return 0;
   }
 
   float temp=normalized-1.0;
   while (true)
   {
-  	temp*=2.0;
-  	if (temp>1.0)
-  	{
-		  bin|=1<<(22-i);
-		  temp-=1.0;
-  	}
-  	if (temp==1.0)
-  	{
-       bin|=1<<(22-i);
-		  break;
-  	}
-  	i++;
-     if (i==23)
-     {
-       break;
-     }
+      temp*=2.0;
+      if (temp>1.0)
+      {
+   	   bin|=1<<(22-i);
+   	   temp-=1.0;
+      }
+      if (temp==1.0)
+      {
+   	bin|=1<<(22-i);
+   	   break;
+      }
+      i++;
+ 	if (i==23)
+ 	{
+   	break;
+ 	}
   }
   (*exp)+=127;
   return bin;
@@ -542,32 +542,32 @@ void blinkLight(unsigned long output) {
   diff=millis()-LEDLastOn;
   if (diff>500 && diff<1000)
   {
-	digitalWrite(output,LOW);
+    digitalWrite(output,LOW);
   } else if (diff>1000) {
-	digitalWrite(output,HIGH);
-	LEDLastOn=millis();
+    digitalWrite(output,HIGH);
+    LEDLastOn=millis();
   }
 }
 void blinkOutLight(unsigned long output1, unsigned long output2) {
   diff=millis()-LightLastOn;
   if (diff>500 && diff<1000)
   {
-	digitalWrite(output1,LOW);
-	digitalWrite(output2,LOW);
+    digitalWrite(output1,LOW);
+    digitalWrite(output2,LOW);
   } else if (diff>1000) {
-	digitalWrite(output1,HIGH);
-	digitalWrite(output2,HIGH);
-	LightLastOn=millis();
+    digitalWrite(output1,HIGH);
+    digitalWrite(output2,HIGH);
+    LightLastOn=millis();
   }
 }
 void blinkOutLight(unsigned long output1) {
   diff=millis()-LightLastOn;
   if (diff>500 && diff<1000)
   {
-	digitalWrite(output1,LOW);
+    digitalWrite(output1,LOW);
   } else if (diff>1000) {
-	digitalWrite(output1,HIGH);
-	LightLastOn=millis();
+    digitalWrite(output1,HIGH);
+    LightLastOn=millis();
   }
 }
 
@@ -583,35 +583,35 @@ void loop() {
 
  
   /*------inputs------*/
-  Buttons();     						  // sequential button inputs rather than prioritized interrupts
+  Buttons();							   // sequential button inputs rather than prioritized interrupts
   //heldButtons();
   //how_long("Buttons");
 
   /*------lights------*/
-  Lights();           				  // lights code
-  //BrakeLight();  					  // brake light specific
+  Lights();      					   // lights code
+  //BrakeLight(); 					   // brake light specific
   //how_long("Lights");
 
   /*------throttle limiter, pedals & brake------*/
-  BrakeGeneral();     				  // analog brake (maybe interrupt???)
+  BrakeGeneral();					   // analog brake (maybe interrupt???)
   //how_long("brakes");
-  pedalInToOut();     				  // basically makes any press on pedal ramp up slowly, and any release an immediate fall
+  pedalInToOut();					   // basically makes any press on pedal ramp up slowly, and any release an immediate fall
   //how_long("intooutped");
-  outPedCC();         				  // takes into account if throttle limiter is on or not, maps to analog output
+  outPedCC();    					   // takes into account if throttle limiter is on or not, maps to analog output
   //how_long("cc");
-  GetHallKPH();       				  // gets current kph (maybe move???)
+  GetHallKPH();  					   // gets current kph (maybe move???)
   //how_long("speed");
-  digitalWrite(CCLed, TLOn);  	 
-  CCLight();  						  // shows current cc/tl status
+  digitalWrite(CCLed, TLOn); 	 
+  CCLight(); 						   // shows current cc/tl status
   //how_long("turnccled");
 
   /*------power------*/
-  HighVoltageMain();  				  // for turning on\off high voltage
-  HVLedOn();       					  // turns light stuff statuses
+  HighVoltageMain(); 				   // for turning on\off high voltage
+  HVLedOn();  						   // turns light stuff statuses
   //how_long("HV");
 
   /*------i2c sendings------*/
-  i2cSender(&ThrottleDAC, outThrot);      // sends out the current throttle voltage
+  i2cSender(&ThrottleDAC, outThrot);  	// sends out the current throttle voltage
   //how_long("i2c sender");
  
   /*------solar panels------*/
@@ -625,7 +625,7 @@ void loop() {
   /*------data------*/
   //odo_run = run_every(30000,odo_run,odometer_write);
   digitalWrite(statusLed, LOW);
-  diagnosticRun();  					  // diagnostic monitor for monitoring
+  diagnosticRun(); 					   // diagnostic monitor for monitoring
   //currDataTransmit();
   //how_long("diagnositcs");
 
@@ -637,19 +637,19 @@ void loop() {
 
 //display shenanigans
 void lcdDisplayUpdate() {
-	//if (debounce(millis(), prevLcdUpd, )) {
+    //if (debounce(millis(), prevLcdUpd, )) {
     
-	//if ((HallKPH < 10.3 && HallKPH > 9.3) || (HallKPH < 100.3 && HallKPH > 99.3)) lastHallLcdReset = false;
+    //if ((HallKPH < 10.3 && HallKPH > 9.3) || (HallKPH < 100.3 && HallKPH > 99.3)) lastHallLcdReset = false;
     
-	if (debounce(millis(), prevUpd, 500)) { //pedal
-     lcdDataWriter((map(outPedalV, 0, 1023, 0, 5)), 3, 19, 1, 0); //ped v
-     prevUpd = millis();
-	}
+    if (debounce(millis(), prevUpd, 500)) { //pedal
+ 	lcdDataWriter((map(outPedalV, 0, 1023, 0, 5)), 3, 19, 1, 0); //ped v
+ 	prevUpd = millis();
+    }
     
-    if (debounce(millis(), prevSpdUpd, 500)) { //speed
-	 if (HallKPH >= 10) lcdDataWriter(HallKPH, 3, 19, 3, 3); else lcdDataWriter(0.0, 3, 19, 3, 3);
-     prevSpdUpd = millis();
-	}
+	if (debounce(millis(), prevSpdUpd, 500)) { //speed
+     if (HallKPH >= 10) lcdDataWriter(HallKPH, 3, 19, 3, 3); else lcdDataWriter(0.0, 3, 19, 3, 3);
+ 	prevSpdUpd = millis();
+    }
 
 
 }
@@ -714,7 +714,7 @@ void GetHallKPH() { //note to self: make this start registering after 10 kph
   TTime = LTime+HTime;
   //total_distance = total_distance_read + trip_distance; //odometer only!!!!!
   float WFreq = 1.0/TTime;
-  //Log(&Serial,0,"TTime",TTime); 	//do i need to log?? not really sure
+  //Log(&Serial,0,"TTime",TTime);     //do i need to log?? not really sure
   //Log(&Serial,0,"WFreq",WFreq);
   hall_last = hall_now;
   //per one pulse
@@ -751,90 +751,90 @@ bool hazardCanOff = false;
 void Lights() {
   unsigned long now=millis();
   if (turningL) {
-  	if ((now-lastLTurn)<=5000) {
-  	  //Serial.println("Left turn lights flashing now");
-  	  // flash lights for left turn
-  	  blinkLight(leftLEDOut);
-  	  blinkOutLight(leftOut); //WHY DONT YOU WORK!!!!!!
-  	} else {
-  	  // Serial.println("STOP Left turn lights");
-  	  // STOP flash lights for left turn
-  	  digitalWrite(leftLEDOut, LOW);
-  	  digitalWrite(leftOut, HIGH);
-  	  turningL = false;
-  	}
+      if ((now-lastLTurn)<=5000) {
+        //Serial.println("Left turn lights flashing now");
+        // flash lights for left turn
+        blinkLight(leftLEDOut);
+        blinkOutLight(leftOut); //WHY DONT YOU WORK!!!!!!
+      } else {
+        // Serial.println("STOP Left turn lights");
+        // STOP flash lights for left turn
+        digitalWrite(leftLEDOut, LOW);
+        digitalWrite(leftOut, HIGH);
+        turningL = false;
+      }
   }
   if (turningR) {
-  	if ((now-lastRTurn)<=5000) {
-  	  //Serial.println("Right turn lights flashing now");
-  	  // flash lights for right turn
-  	  blinkLight(rightLEDOut);
-  	  blinkOutLight(rightOut); //you also dont work!!!!!!
-  	  //digitalWrite(rightOut, RIGHT);
-  	} else{
-  	  // Serial.println("STOP Right turn lights");
-  	  // STOP flash lights for right turn
-  	  digitalWrite(rightLEDOut, LOW);
-  	  digitalWrite(rightOut, HIGH);
-  	  turningR = false;
-  	}
+      if ((now-lastRTurn)<=5000) {
+        //Serial.println("Right turn lights flashing now");
+        // flash lights for right turn
+        blinkLight(rightLEDOut);
+        blinkOutLight(rightOut); //you also dont work!!!!!!
+        //digitalWrite(rightOut, RIGHT);
+      } else{
+        // Serial.println("STOP Right turn lights");
+        // STOP flash lights for right turn
+        digitalWrite(rightLEDOut, LOW);
+        digitalWrite(rightOut, HIGH);
+        turningR = false;
+      }
   }
   if (hazardOn) { // flipped?
-    //on state code here
-    blinkLight(hazardLEDOut);
-	blinkOutLight(leftOut, rightOut);
+	//on state code here
+	blinkLight(hazardLEDOut);
+    blinkOutLight(leftOut, rightOut);
    //blinkOutLight(rightOut);
-	hazardCanOff = true;
+    hazardCanOff = true;
   } else if (hazardCanOff && !hazardOn) {
-    //off state code here
-    // STOP flash lights for both left and right
-    digitalWrite(hazardLEDOut, LOW);
-    digitalWrite(rightOut, HIGH);
-    digitalWrite(leftOut, HIGH); //left just, doesn't work here
-	hazardCanOff = false;
+	//off state code here
+	// STOP flash lights for both left and right
+	digitalWrite(hazardLEDOut, LOW);
+	digitalWrite(rightOut, HIGH);
+	digitalWrite(leftOut, HIGH); //left just, doesn't work here
+    hazardCanOff = false;
   }
-    digitalWrite(drlLEDOut, daylightOn);
-    digitalWrite(daylightOut, !daylightOn);
+	digitalWrite(drlLEDOut, daylightOn);
+	digitalWrite(daylightOut, !daylightOn);
 }
 void BrakeLight() {
-	if (brakingNow) digitalWrite(brakeOut, LOW); else digitalWrite(brakeOut, HIGH);
-	//Serial.println("brakelight 1080");
+    if (brakingNow) digitalWrite(brakeOut, LOW); else digitalWrite(brakeOut, HIGH);
+    //Serial.println("brakelight 1080");
 }
 
 //throttle limiter, actual throttle & analog brake
 void ThrottleLimiter(unsigned long i) { //toggle for enable
-  	if (!TLOn) {
-  		if (debounce(millis(), lastTLOn, 100)) {
-  			TLOn = true;
-  			lastTLOn = millis();
-  			//if (TLOn) {
-  			  TLv = outPedalV; //seamless execution
-  			  actualTLv = map(TLv, 0, 1023, 0, 5);
-  			  lcdDataWriter(actualTLv, 3, 19, 2, 0);
-  			//} else if (!TLOn) lcdDataWriter(0.0, 3, 19, 2, 0);
-  		}
-  	} else {
-  		if (debounce(millis(), lastTLUp, 50) && TLOn) {
-  			actualTLv = min(5,actualTLv+0.1);
-  			lastTLUp = millis();
-  			//Serial.print("Cruise control voltage increased. Now reading "); Serial.println(TLv); //make-sure-it-works printing
-  			TLv = map(actualTLv, 0, 5, 0, 1023);
-  			lcdDataWriter(actualTLv, 3, 19, 2, 0);
-  		}
-  	}
- 	 
+      if (!TLOn) {
+     	 if (debounce(millis(), lastTLOn, 100)) {
+     		 TLOn = true;
+     		 lastTLOn = millis();
+     		 //if (TLOn) {
+     		   TLv = outPedalV; //seamless execution
+     		   actualTLv = map(TLv, 0, 1023, 0, 5);
+     		   lcdDataWriter(actualTLv, 3, 19, 2, 0);
+     		 //} else if (!TLOn) lcdDataWriter(0.0, 3, 19, 2, 0);
+     	 }
+      } else {
+     	 if (debounce(millis(), lastTLUp, 50) && TLOn) {
+     		 actualTLv = min(5,actualTLv+0.1);
+     		 lastTLUp = millis();
+     		 //Serial.print("Cruise control voltage increased. Now reading "); Serial.println(TLv); //make-sure-it-works printing
+     		 TLv = map(actualTLv, 0, 5, 0, 1023);
+     		 lcdDataWriter(actualTLv, 3, 19, 2, 0);
+     	 }
+      }
+	 
 }
 /* void Coaster(unsigned long i) { //toggle for enable
   //if (debounce(millis(), lastTLOn, 100)) {
-	test = true;
+    test = true;
   //}
 } */
 void CCLight() {
-	if (Coasting && TLOn) blinkLight(CCLed); else if (!Coasting && TLOn) digitalWrite(CCLed, HIGH); else if (!Coasting && !TLOn) digitalWrite(CCLed, LOW);
+    if (Coasting && TLOn) blinkLight(CCLed); else if (!Coasting && TLOn) digitalWrite(CCLed, HIGH); else if (!Coasting && !TLOn) digitalWrite(CCLed, LOW);
 }
 void ThrottleLimiterUp(unsigned long i) {
   if (debounce(millis(), lastTLUp, 100) && TLOn) {
-  	Coasting = !Coasting;
+      Coasting = !Coasting;
   /* actualTLv = min(5,actualTLv+0.1);
   lastTLUp = millis();
   //Serial.print("Cruise control voltage increased. Now reading "); Serial.println(TLv); //make-sure-it-works printing
@@ -865,17 +865,17 @@ void outPedCC() { //cruise control
   vHolder = TLv;
   //} else vHolder = outPedalV; //basically nothing
   } else if (Coasting || !TLOn) {
-  	if (brakingNow) {
-  	  vHolder = 0;
-  	} else vHolder = outPedalV; //basically motor shutoff
+      if (brakingNow) {
+        vHolder = 0;
+      } else vHolder = outPedalV; //basically motor shutoff
   }
   outThrot = min(4095, map(vHolder, 0, 1023, 0, 4095));
 
 }
 void BrakeGeneral() {
-	/*
-	rewrite brakes so they work on a single if function
-	*/
+    /*
+    rewrite brakes so they work on a single if function
+    */
     
   //should disable throttle input and apply brakes in accordance to potentiometer input.
   //if larger than 0.8 volt, turn off throttle and scale signal to the 5 volt range.
@@ -883,15 +883,15 @@ void BrakeGeneral() {
   //unsigned long pedInBrake = map(analogRead(brakeOn), 0, 1023, 0, 3.3);
   //bool analogBrakingNow = false;
   if (digitalRead(brakeOn) || (inBrake > 230)) {
-	if (TLOn) Coasting = true;
-	brakingNow = true;
-	digitalWrite(brakeOut, LOW);
-	if (digitalRead(brakeOn)) i2cSender(&BrakeDAC, 1250);
-	if (inBrake > 230) i2cSender(&BrakeDAC, outBrake);
+    if (TLOn) Coasting = true;
+    brakingNow = true;
+    digitalWrite(brakeOut, LOW);
+    if (digitalRead(brakeOn)) i2cSender(&BrakeDAC, 1250);
+    if (inBrake > 230) i2cSender(&BrakeDAC, outBrake);
   } else {
-	brakingNow = false;
-	digitalWrite(brakeOut, HIGH);
-	i2cSender(&BrakeDAC, 100);
+    brakingNow = false;
+    digitalWrite(brakeOut, HIGH);
+    i2cSender(&BrakeDAC, 100);
   }
  
  
@@ -926,8 +926,8 @@ void HighVoltageToggle(unsigned long i) { //toggle
   digitalWrite(HighVOut, LOW);
   //turning off
   if (HVOnCo == HIGH) {//might be low (aka pull-down) instead
-	//digitalWrite(HVLed, LOW);
-	//Serial.println("High Voltage shutoff successful.");
+    //digitalWrite(HVLed, LOW);
+    //Serial.println("High Voltage shutoff successful.");
   } //else Serial.println("High Voltage shutoff unsuccessful; confirmation discrepancy."); //ends shutoff sequence
   HVOn = false;
   }
@@ -938,21 +938,21 @@ void HighVoltageMain() {
   if (!HVOn && HVOnInProgress && millis()-lastHVToggle>buffer) {
   //turning on
   //waits some set number of seconds before turning on hv to ensure soft start has enough time to enable
-	digitalWrite(HighVOut, HIGH); //turning ON HV
-	//Serial.println("- High Voltage enabled. Confirming..."); //make this run ONCE while waiting the one second
-	//gives system some time to activate fully before checking
-	if(millis()-lastHVToggle>buffer) {
-  	if (digitalRead(HVOnCo) == LOW) { //( PULL UP)
-  	  HVOn = true;
-  	  HVOnInProgress=false;
-  	  //turns off soft start because high voltage is now on fully
-  	  digitalWrite(softStartOut, LOW); //turning off soft start
-  	  //feedback for driver to actually know hv is on
-  	  //digitalWrite(HVLed, HIGH);
-  	  //Serial.println("High Voltage activation confirmed. Soft start deactivated.");
-  	  //ends activation sequence
-  	} //else Serial.println("High Voltage activation not confirmed.");
-	}
+    digitalWrite(HighVOut, HIGH); //turning ON HV
+    //Serial.println("- High Voltage enabled. Confirming..."); //make this run ONCE while waiting the one second
+    //gives system some time to activate fully before checking
+    if(millis()-lastHVToggle>buffer) {
+      if (digitalRead(HVOnCo) == LOW) { //( PULL UP)
+        HVOn = true;
+        HVOnInProgress=false;
+        //turns off soft start because high voltage is now on fully
+        digitalWrite(softStartOut, LOW); //turning off soft start
+        //feedback for driver to actually know hv is on
+        //digitalWrite(HVLed, HIGH);
+        //Serial.println("High Voltage activation confirmed. Soft start deactivated.");
+        //ends activation sequence
+      } //else Serial.println("High Voltage activation not confirmed.");
+    }
   }
 }
 void SolarPanelOff() {
@@ -975,10 +975,16 @@ void SolarPanel1(unsigned long i) { //toggle (solar panels dont need debounce as
 }
 void SolarPanel2(unsigned long i) { //toggle (solar panels dont need debounce as they only go on or all off!!!)
   if (PVcanEnable && HVOn) {
-  if (debounce(millis(), lastPV2On, 100)) {
-  PV2On = !PV2On;
-  digitalWrite(PV2Out, PV2On);
-  lastPV2On = millis();
-  }
+      if (debounce(millis(), lastPV2On, 100)) {
+      PV2On = !PV2On;
+      digitalWrite(PV2Out, PV2On);
+      lastPV2On = millis();
+      }
   }
 }
+
+
+
+
+
+
