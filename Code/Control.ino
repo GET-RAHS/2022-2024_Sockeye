@@ -14,8 +14,7 @@ TwoWire i2cControl = TwoWire(1); */
 #define _RISING 1
 
 //input pins
-const unsigned int 
-leftTurnButton = 39,
+const unsigned int leftTurnButton = 39,
 rightTurnButton = 41,
 hazardButton = 32,
 daylightButton = 30,
