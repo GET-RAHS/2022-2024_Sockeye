@@ -14,4 +14,4 @@ Issues:
 
 1: If there are any missing libraries you should be able to install them from the Arduino IDE Library manager
 
-2: If there are any "Duplicate Libraries" delete ALL your libraries and completely reinstall the libraries
+2: If there are any "Duplicate Libraries" delete ALL your libraries and completely reinstall the libraries, or, go to C:\Users\"username"\AppData\Local\Arduino15\packages\teensy\hardware\avr\1.59.0\libraries and delete the duplicates. (The file location might be slightly different depending on how you installed arduino.
