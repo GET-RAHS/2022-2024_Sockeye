@@ -1,0 +1,17 @@
+To install all the labraries:
+
+1: Open Arduino, assuming you have teensyduino installed
+
+2: Open File-->Preferences and change your "sketchbook location" to an easily accessible place
+
+3: Go to the location of the sketchbook, and if there's not a folder named "Libraries", make one
+
+4: Download all the libraries from github and manually put all of them in the new "Libraries" folder. There is no need to use the Arduino IDE to install the Libraries manually
+
+5: Restart Arduino IDE and upload the code, 
+
+Issues:
+
+1: If there are any missing libraries you should be able to install them from the Arduino IDE Library manager
+
+2: If there are any "Duplicate Libraries" delete ALL your libraries and completely reinstall the libraries
