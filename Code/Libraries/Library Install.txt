@@ -1,4 +1,4 @@
-To install all the labraries:
+To install all the libraries:
 
 1: Open Arduino, assuming you have teensyduino installed
 
@@ -6,7 +6,7 @@ To install all the labraries:
 
 3: Go to the location of the sketchbook, and if there's not a folder named "Libraries", make one
 
-4: Download all the libraries from github and manually put all of them in the new "Libraries" folder. There is no need to use the Arduino IDE to install the Libraries manually
+4: Download the library zip file from the GitHub library directory, extract it, and manually put all the folders inside in the new "Libraries" folder you made in the last step. There is no need to use the Arduino IDE to install the Libraries manually
 
 5: Restart Arduino IDE and upload the code, 
 
@@ -14,4 +14,4 @@ Issues:
 
 1: If there are any missing libraries you should be able to install them from the Arduino IDE Library manager
 
-2: If there are any "Duplicate Libraries" delete ALL your libraries and completely reinstall the libraries, or, go to C:\Users\"username"\AppData\Local\Arduino15\packages\teensy\hardware\avr\1.59.0\libraries and delete the duplicates. (The file location might be slightly different depending on how you installed arduino.
+2: If there are any "Duplicate Libraries" delete ALL your libraries and completely reinstall the libraries, or, go to C:\Users\"username"\AppData\Local\Arduino15\packages\teensy\hardware\avr\1.59.0\libraries and delete the duplicates. (The file location might be slightly different depending on how you installed Arduino.
