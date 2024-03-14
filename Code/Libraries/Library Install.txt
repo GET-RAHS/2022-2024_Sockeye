@@ -1,12 +1,12 @@
 To install all the libraries:
 
-1: Open Arduino, assuming you have teensyduino installed
+1: Open Arduino, assuming you have TeensyDuino installed
 
 2: Open File-->Preferences and change your "sketchbook location" to an easily accessible place
 
-3: Go to the location of the sketchbook, and if there's not a folder named "Libraries", make one
+3: Go to the location of the newly created sketchbook, and if there's not a folder named "Libraries", make one
 
-4: Download the library zip file from the GitHub library directory, extract it, and manually put all the folders inside in the new "Libraries" folder you made in the last step. There is no need to use the Arduino IDE to install the Libraries manually
+4: Download the library zip file from the GitHub library directory, extract it, and manually put all the folders inside the new "Libraries" folder you made in the last step. There is no need to use the Arduino IDE to install the Libraries manually
 
 5: Restart Arduino IDE and upload the code, 
 
