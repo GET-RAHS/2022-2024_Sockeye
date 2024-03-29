@@ -22,9 +22,6 @@ Serial4.begin(19200);
 
 
 void loop() {
-  Serial.println();
-  Serial.println();
-
   //update floats to simulate a fluctuating value
   motorW_float += .01;
   solarW1_float += .02;
@@ -71,41 +68,6 @@ void loop() {
   tele[14] = secondByte(batV_int);
   tele[15] = firstByte(batV_int);
 
-
-
-  //intake from control teensy
-  if(Serial4.available() > 4){
-
-    //reads the bytes sent from the control teensy
-    Serial4.readBytes(contrl, 4);
-    Serial4.flush();
-
-
-    //sets intake variable to the sum of two bytes, one of which is shifted left 8 bits
-    PedV = (contrl[0] << 8) + contrl[1];
-    CCV = (contrl[2] << 8) + contrl[3];
-
-
-    //prints variables found (should move, or delete when implemented into main code)
-    Serial.print("PedV: ");
-    Serial.println(PedV);
-
-    //cruise control voltage
-    Serial.print("CCV: ");
-    Serial.println(CCV);
-
-    //prints entire array
-    for(int i = 0; i < 4; i++){
-      Serial.print(contrl[i]);
-      Serial.print("    "); 
-    }
-    Serial.println();
-  }
-
-
-
-
-
   //output to control teensy
   if(Serial4.availableForWrite() > 16){
 
@@ -138,6 +100,39 @@ void loop() {
       Serial.print("    ");
       Serial.flush();
     }
+    delay(100);
+    //intake from control teensy
+
+    //reads the bytes sent from the control teensy
+    Serial4.readBytes(contrl, 4);
+    Serial4.flush();
+
+    //sets intake variable to the sum of two bytes, one of which is shifted left 8 bits
+    PedV = (contrl[0] << 8) + contrl[1];
+    CCV = (contrl[2] << 8) + contrl[3];
+    
+    Serial.println();
+    Serial.println();
+    Serial.println();
+    Serial.println();
+    //prints variables found (should move, or delete when implemented into main code)
+    Serial.print("PedV: ");
+    Serial.println(PedV);
+
+    //cruise control voltage
+    Serial.print("CCV: ");
+    Serial.println(CCV);
+
+    //prints entire array
+    for(int i = 0; i < 4; i++){
+      Serial.print(contrl[i]);
+      Serial.print("    "); 
+    }
+    Serial.println();
+    Serial.println();
+
   }
-  delay(100);
+  Serial4.flush();
+  Serial4.end();
+  Serial4.begin(19200);
 }
