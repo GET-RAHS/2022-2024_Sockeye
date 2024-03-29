@@ -13,14 +13,13 @@ TwoWire i2cControl = TwoWire(1); */
 #define _FALLING 0
 #define _RISING 1
 
-byte controldata[2];
-
-//inpu6t pins
+//input pins
 const unsigned int 
 leftTurnButton = 39,
 rightTurnButton = 41,
 hazardButton = 32,
 daylightButton = 30,
+TLEnableButton = 21, //make new assignment
 TLButton = 37,
 TLUpButton = 35,
 TLDownButton = 34,
@@ -105,8 +104,7 @@ float TLv = 0,   	   //maximum voltage going to motor controller under throttle 
 actualTLv = 0,
 scaledInPedalV = 0,
 outPedalV = 0;
-int inPedalV = 0,
-PedalV = 0;
+int inPedalV = 0;
 float prevPedalV = 0;
 int outThrot = 0,
 
@@ -220,8 +218,8 @@ void setup() {
   AssignButton(rightTurnButton, TurnRight, _FALLING);
   AssignButton(hazardButton, Hazard, _FALLING);
   AssignButton(daylightButton, Daylight, _FALLING);
-  AssignButton(TLButton, ThrottleLimiter, _FALLING);
-  AssignButton(TLUpButton, ThrottleLimiterUp, _FALLING);
+  AssignButton(TLUpButton, ThrottleLimiter, _FALLING); //double check assignments
+  AssignButton(TLButton, ThrottleLimiterUp, _FALLING); //double check assignments
   AssignButton(TLDownButton, ThrottleLimiterDown, _FALLING);
   AssignButton(HVButton, HighVoltageToggle, _FALLING);
   AssignButton(PV1Button, SolarPanel1, _FALLING);
@@ -230,9 +228,9 @@ void setup() {
   //AssignButton(PVOffButton, SolarPanelOff, _FALLING);
   // AssignButton(digitalPinToInterrupt(softStartButton), SoftStart, _FALLING);
 
+
   //library/system setup
   Serial.begin(9600);
-  Serial2.begin(19200);
   //Serial5.begin(9600); //data teensy
   Wire.begin(0x02); //do i even need an address?
   Wire.setSDA(17);  //double check that data pins are correct
@@ -265,6 +263,17 @@ void setup() {
   digitalWrite(rightOut, HIGH);
   digitalWrite(leftOut, HIGH);
   i2cSender(&ThrottleDAC, 500);
+    
+ 
+
+  //throttle reset redundancy
+  TLv = 0;   	 
+  actualTLv = 0;
+  scaledInPedalV = 0;
+  outPedalV = 0;
+  inPedalV = 0;
+  prevPedalV = 0;
+  outThrot = 0;
 }
 
 //button assignment
@@ -570,6 +579,7 @@ void blinkOutLight(unsigned long output1) {
 
 //main
 void loop() {
+
   /*------temporary------*/
   digitalWrite(statusLed, LOW);
 
@@ -620,7 +630,7 @@ void loop() {
   diagnosticRun(); 					   // diagnostic monitor for monitoring
   //currDataTransmit();
   //how_long("diagnositcs");
-  PedalV = int(outPedalV);
+
 }
 
 
@@ -658,11 +668,16 @@ void diagnosticRun() {
   if (digitalRead(softStartOut) == HIGH) Serial.println("Soft start relay enabled."); else Serial.println("Soft start relay disabled.");
   if (digitalRead(HighVOut) == HIGH) Serial.println("HV relay enabled."); else Serial.println("HV relay disabled.");
   if (digitalRead(HVOnCo) == LOW) Serial.println("HV relay enable confirmed."); else Serial.println("HV relay enable not confirmed or is N/A.");
-  Serial.println("[-CC-]");
-  if (TLOn) Serial.println("Cruise control activated."); else Serial.println("Cruise control deactivated.");
-  Serial.print("Cruise control voltage (1023 to 0) -> "); Serial.println(TLv);
-  Serial.print("Cruise control voltage out (5 to 0) -> "); Serial.println(actualTLv);
-  Serial.print("coastStatus -> "); Serial.println(Coasting);
+  Serial.print("[-CC-]"); Serial.println("");
+  Serial.print("Input Readings:"); Serial.println("");
+  Serial.print("    Cruise Control Button Status: "); Serial.println(digitalRead(TLButton));
+  Serial.print("    Cruise Control Up Button Status: "); Serial.println(digitalRead(TLUpButton));
+  Serial.print("    Cruise Control Down Button Status: "); Serial.println(digitalRead(TLDownButton));
+if (TLOn) Serial.println("Cruise control activated."); else Serial.println("Cruise control deactivated.");
+  Serial.print("Internal Statuses:"); Serial.println("");
+  Serial.print("    Cruise control voltage (1023 to 0) -> "); Serial.println(TLv);
+  Serial.print("    Cruise control voltage out (5 to 0) -> "); Serial.println(actualTLv);
+  Serial.print("    Coast Status -> "); Serial.println(Coasting);
   Serial.println("[-AN-]");
   Serial.print("anBrakeCurrOut (4095 to 0) -> "); Serial.println(outBrake);
   Serial.print("anBrakeCurrIn (1023 to 0) -> "); Serial.println(analogRead(brakeAn));
@@ -974,9 +989,3 @@ void SolarPanel2(unsigned long i) { //toggle (solar panels dont need debounce as
       }
   }
 }
-
-
-
-
-
-
