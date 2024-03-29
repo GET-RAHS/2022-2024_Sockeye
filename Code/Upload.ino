@@ -35,16 +35,16 @@
 
 uint32_t flag = 0x0;
 // INA variables
-//                  addr, a,  ohm,    bvct, svct,  avg,VF,              AF,             label
+//                             addr, a,  ohm,    bvct, svct,  avg,VF,              AF,             label
 // INA* SBat = new INA(&Wire1, 0x45, 24, 0.03,   7,    7,     2,  1.0,             1.0/3.0,        "Suppl. Batt. INA");
 // INA* Mot1 = new INA(&Wire1, 0x40, 80, 0.001,  7,    7,     2,  1.0,             5.02/4.99*-1.0, "Mot1 INA");
 // INA* Sol1 = new INA(&Wire1, 0x41, 80, 0.01,   7,    7,     2,  1.0,             5.0/50.71,      "Sol1 INA");
 // INA* Sol2 = new INA(&Wire1, 0x44, 80, 0.01,   7,    7,     2,  1.0,             5.0/50.78,      "Sol2 INA");
 
-INA* SBat = new INA(&Wire1, 0x45, 24, 0.03,   7,    7,     2,  1.0,             1.0,        "Suppl. Batt. INA");
-INA* Mot1 = new INA(&Wire1, 0x40, 80, 0.001,  7,    7,     2,  1.0,             -1.0, "Mot1 INA");
-INA* Sol1 = new INA(&Wire1, 0x41, 80, 0.01,   7,    7,     2,  1.0,             5.0/24.77,      "Sol1 INA");
-INA* Sol2 = new INA(&Wire1, 0x44, 80, 0.01,   7,    7,     2,  1.0,             5.0/24.94,      "Sol2 INA");
+INA* SBat = new INA(0x45, 24, 0.03,   7,    7,     2,  1.0,             1.0,        "Suppl. Batt. INA");
+INA* Mot1 = new INA(0x40, 80, 0.001,  7,    7,     2,  1.0,             -1.0, "Mot1 INA");
+INA* Sol1 = new INA(0x41, 80, 0.01,   7,    7,     2,  1.0,             5.0/24.77,      "Sol1 INA");
+INA* Sol2 = new INA(0x44, 80, 0.01,   7,    7,     2,  1.0,             5.0/24.94,      "Sol2 INA");
 
 // INA functions
 void INAInit()   
@@ -173,7 +173,6 @@ void MPPTInit()
     can2.setBaudRate(500000);
 }
 
-
 unsigned long MPPT_read_tries=0;
 
 // bool MPPTRead()
@@ -209,7 +208,6 @@ unsigned long MPPT_read_tries=0;
 //     return success;
 // }
 
-
 // Teensy software reset
 void reset()
 {
@@ -234,6 +232,7 @@ void WirelessInit()
     {
         Log(&Serial,0,"Network connect","success");
         DatabaseInit();
+        Log(&Serial,0,"DatabaseInit","success");
     } else {
         Log(&Serial,0,"Network connect","fail");
     }
@@ -283,6 +282,7 @@ int mtr_temp_pin = A14;
 int mtr_temp_val = 0;
 int mtr_fan_temp_pin = A15;
 int mtr_fan_temp_val = 0;
+int PedalV = 0;
 
 
 unsigned long lastHallTime=0;
@@ -408,12 +408,10 @@ void setup()
     // pinMode(2, OUTPUT); // Red
 
     Serial.begin(115200);
+    Serial2.begin(19200);
     // Serial5.begin(9600);
     // Serial5.setTimeout(50);
     Serial.println("  _______ ______ _      ______ __  __ ______ _______ _______     __   _____ ______ _______ _    _ _____  \n |__   __|  ____| |    |  ____|  \\/  |  ____|__   __|  __ \\ \\   / /  / ____|  ____|__   __| |  | |  __ \\ \n    | |  | |__  | |    | |__  | \\  / | |__     | |  | |__) \\ \\_/ /  | (___ | |__     | |  | |  | | |__) |\n    | |  |  __| | |    |  __| | |\\/| |  __|    | |  |  _  / \\   /    \\___ \\|  __|    | |  | |  | |  ___/ \n    | |  | |____| |____| |____| |  | | |____   | |  | | \\ \\  | |     ____) | |____   | |  | |__| | |     \n    |_|  |______|______|______|_|  |_|______|  |_|  |_|  \\_\\ |_|    |_____/|______|  |_|   \\____/|_|     \n                                                                                                         \n                                                                                                         ");
-
-
-
     WirelessInit();
     Log(&Serial,0,"Ethernet","starting");
     pinMode(hall_pulse_pin,INPUT);
