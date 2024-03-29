@@ -13,7 +13,9 @@ TwoWire i2cControl = TwoWire(1); */
 #define _FALLING 0
 #define _RISING 1
 
-//input pins
+byte controldata[2];
+
+//inpu6t pins
 const unsigned int 
 leftTurnButton = 39,
 rightTurnButton = 41,
@@ -103,7 +105,8 @@ float TLv = 0,   	   //maximum voltage going to motor controller under throttle 
 actualTLv = 0,
 scaledInPedalV = 0,
 outPedalV = 0;
-int inPedalV = 0;
+int inPedalV = 0,
+PedalV = 0;
 float prevPedalV = 0;
 int outThrot = 0,
 
@@ -227,9 +230,9 @@ void setup() {
   //AssignButton(PVOffButton, SolarPanelOff, _FALLING);
   // AssignButton(digitalPinToInterrupt(softStartButton), SoftStart, _FALLING);
 
-
   //library/system setup
   Serial.begin(9600);
+  Serial2.begin(19200);
   //Serial5.begin(9600); //data teensy
   Wire.begin(0x02); //do i even need an address?
   Wire.setSDA(17);  //double check that data pins are correct
@@ -262,17 +265,6 @@ void setup() {
   digitalWrite(rightOut, HIGH);
   digitalWrite(leftOut, HIGH);
   i2cSender(&ThrottleDAC, 500);
-    
- 
-
-  //throttle reset redundancy
-  TLv = 0;   	 
-  actualTLv = 0;
-  scaledInPedalV = 0;
-  outPedalV = 0;
-  inPedalV = 0;
-  prevPedalV = 0;
-  outThrot = 0;
 }
 
 //button assignment
@@ -578,7 +570,6 @@ void blinkOutLight(unsigned long output1) {
 
 //main
 void loop() {
-
   /*------temporary------*/
   digitalWrite(statusLed, LOW);
 
@@ -629,7 +620,7 @@ void loop() {
   diagnosticRun(); 					   // diagnostic monitor for monitoring
   //currDataTransmit();
   //how_long("diagnositcs");
-
+  PedalV = int(outPedalV);
 }
 
 
