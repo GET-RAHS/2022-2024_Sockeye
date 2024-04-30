@@ -281,7 +281,7 @@ void setup() {
     lcdLabel("BATV", 10, 0);
     lcdLabel("PEDV", 10, 1);
     lcdLabel("CCV", 11, 2);
-    lcdLabel("KPH", 11, 3); //might be mph later tho
+    lcdLabel("MPH", 11, 3); //might be mph later tho
 
     lcdLabel("%", 19, 1);
     lcdLabel("%", 19, 2);
@@ -741,7 +741,7 @@ void lcdPowerUpdate(){
     lcdLabel("BATV", 10, 0);
     lcdLabel("PEDV", 10, 1);
     lcdLabel("CCV", 11, 2);
-    lcdLabel("KPH", 11, 3); //might be mph later tho
+    lcdLabel("MPH", 11, 3); //might be mph later tho
 
     lcdLabel("%", 19, 1);
     lcdLabel("%", 19, 2);
@@ -764,8 +764,8 @@ void lcdDisplayUpdate() {
   
     
 	if (debounce(millis(), prevSpdUpd, 200)) { //speed
-     if (HallKPH >= 10) lcdDataWriter(HallKPH, 3, 19, 3, 3); else lcdDataWriter(0.0, 3, 19, 3, 3);
- 	prevSpdUpd = millis();
+    lcdDataWriter(HallKPH*0.621, 3, 19, 3, 3);
+ 	  prevSpdUpd = millis();
   }
 
 
