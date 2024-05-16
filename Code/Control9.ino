@@ -1053,6 +1053,7 @@ void BrakeGeneral() {
     digitalWrite(CCLed, CCSET);
     digitalWrite(brakeOut, LOW);
     //if (digitalRead(brakeOn)) i2cSender(&BrakeDAC, 1250);
+
     if (inBrake > 230) i2cSender(&BrakeDAC, outBrake);
   } else {
     brakingNow = false;
