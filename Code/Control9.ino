@@ -23,7 +23,7 @@ byte tele[20];
 uint16_t PedV = 6;
 
 float motorW_float = 1, solarW1_float = 4, solarW2_float = 3, BattA_float = 0.4, BattV_float = 5, BattW = 2, CCV = 0, CCVmot = 0;
-uint32_t motorW_int = 0, solarW1_int = 0, solarW2_int = 0, BattA_int = 0, BattV_int = 5, CCV_int = 0;
+long motorW_int = 0, solarW1_int = 0, solarW2_int = 0, BattA_int = 0, BattV_int = 5, CCV_int = 0;
 
 //inpu6t pins
 const unsigned int 
@@ -397,7 +397,7 @@ void lcdDataWriter(int data, int space, int cursorX, int cursorY) {
   for (int i = space; i > 0; i--) lcd.print(" ");
   lcd.leftToRight();
   lcd.setCursor(cursorX - length + 2, cursorY);
-  lcd.print(data, 1); //number of values after the point is 1
+  lcd.print(data, 10); //number of values after the point is 1
 }
 void lcdDataWriter(float data, unsigned int divider, int space, int cursorX, int cursorY, int emptyspace) { // do i even need this? //divider denotes decimal point location btw
   //was stupid and tried to do this the really complicated way..
@@ -611,14 +611,15 @@ void loop() {
     
     motorW_int = (tele[0] << 24) + (tele[1] << 16) + (tele[2] << 8) + tele[3];
     memcpy(&motorW_float, &motorW_int, 4);
+    motorW_float = -(motorW_float);
 
     solarW1_int = (tele[4] << 24) + (tele[5] << 16) + (tele[6] << 8) + tele[7];
     memcpy(&solarW1_float, &solarW1_int, 4);
-    solarW1_float = -(solarW1_float);
+    //solarW1_float = -(solarW1_float);
 
     solarW2_int = (tele[8] << 24) + (tele[9] << 16) + (tele[10] << 8) + tele[11];
     memcpy(&solarW2_float, &solarW2_int, 4);
-    solarW2_float = -(solarW2_float);
+    //solarW2_float = -(solarW2_float);
 
     BattV_int = (tele[12] << 24) + (tele[13] << 16) + (tele[14] << 8) + tele[15];
     memcpy(&BattV_float, &BattV_int, 4);
@@ -725,12 +726,12 @@ void lcdPowerUpdate(){
   }
 
   if (PV2On | PV1On && debounce(millis(), prevPVUpd, 2000)) {
-    lcdDataWriter(round(solarW1_float), 3, 7, 3);
-    lcdDataWriter(round(solarW2_float), 3, 7, 2);
+    lcdDataWriter(round(solarW1_float), 5, 7, 3);
+    lcdDataWriter(round(solarW2_float), 5, 7, 2);
     prevPVUpd = millis();
   }
 
-  if(debounce(millis(), lastlcd, 7500)){
+  if(debounce(millis(), lastlcd, 10000)){
     lcd.clear();
     lcdLabel("MOTW", 0, 0);
     lcdLabel("BATW", 0, 1);
@@ -760,7 +761,7 @@ void lcdPowerUpdate(){
     prevBattVUpd = 5000;
     lastlcd = millis();
   }
-
+  
 
 }
 
@@ -1028,8 +1029,6 @@ void outPedCC() {
   unsigned long vHolder = 0;
   if (CCSET && !Coasting) {
     vHolder = CCVmot;
-  } else if(Coasting) {
-    vHolder = 0;
   } else {
     vHolder = outPedalV;
   }
